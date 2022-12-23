@@ -27,11 +27,11 @@
 
 
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
+    <nav class="navbar navbar-expand-lg navbar-light shadow mainheader">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html" style="font-family: 'Mochiy Pop P One', sans-serif;">
-                <span style="color: orangered;">Neo</span><span style="background: linear-gradient(90deg,orangered,purple); color: transparent; background-clip: text;-webkit-background-clip: text; -moz-background-clip: text; ">S</span><span style="color: purple;">hop</span>
+            <a class="navbar-brand text-success logo h1 align-self-center icon-text" href="{% url 'index' %}" style="font-family: 'Mochiy Pop P One', sans-serif;">
+                <span>Neo</span><span>S</span><span>hop</span>
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
@@ -45,16 +45,16 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="{% url 'index' %}">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="{% url 'About' %}">Hakkımızda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Shop</a>
+                            <a class="nav-link" href="{% url 'Shop' %}">Alışveriş</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{% url 'Contact' %}">İletişim</a>
                         </li>
                     </ul>
                 </div>
@@ -71,7 +71,7 @@
                         data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <!-- <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span
                             class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
@@ -80,7 +80,9 @@
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span
                             class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
+                    </a> -->
+                    <a href="{% url 'loginUser' %}" class="btn btn-success mx-2 btn-purple">Giriş Yap</a>
+                    <a href="" class="btn btn-success btn-purple">Kaydol</a>
                 </div>
             </div>
 

@@ -18,6 +18,8 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from appMy.views import *
+from appUser.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +28,7 @@ urlpatterns = [
     path('alışveriş/', Shop, name='Shop'),
     path('ürün/', ShopSingle, name='ShopSingle'),
     path('iletişim/', Contact, name='Contact'),
+    # USER
+    path('login/', loginUser, name='loginUser'),
+    path('register/', registerUser, name='registerUser'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

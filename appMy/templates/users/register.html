@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block csslink %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto+Condensed:wght@700&family=Roboto:wght@300;400;500;600;700&display=swap');
+
+
+    * {
+        font-family: 'Roboto', sans-serif;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+
+        text-decoration: none !important;
+
+    }
+
+    .loginregister {
+        padding-bottom: 200px;
+        background-color: #fff9f9;
+        height: 100%;
+        width: 100vw;
+        background-color: rgb(247, 201, 184);
+    }
+
+    .loginregister form {
+        margin: 0 auto;
+        width: 600px;
+        max-height: auto;
+        transform: translateY(10%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 20px;
+        box-shadow: 0px 0 31px 0px rgb(0 0 0 / 10%);
+    }
+
+    .loginregister h1 {
+        margin: 20px 0 10px 0;
+        font-size: 3rem;
+        font-weight: 400;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .loginregister .login-form {
+        width: 70%;
+        margin-bottom: 15px;
+    }
+
+    .loginregister h4 {
+        margin: 20px 0 5px 0;
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+
+    .loginregister input {
+        width: 80%;
+        font-size: 1.1rem;
+        font-weight: 300;
+        padding: 7px 0;
+        border: none;
+        outline: none;
+        background-color: transparent !important;
+    }
+
+    .loginregister .username-input,
+    .password-input {
+        width: 90%;
+        border-bottom: 1px solid #a4a4a4;
+    }
+
+    .loginregister i {
+        width: 10%;
+        color: rgba(0, 0, 0, 0.3);
+        padding-right: 7px;
+    }
+
+    .loginregister .login-form>p {
+        width: 90%;
+        font-size: 1.1rem;
+        text-align: right;
+        margin-top: 5px;
+        font-weight: 300;
+    }
+
+    .loginregister .login-btn {
+        border: none;
+        padding: 7px 20px;
+        width: 50%;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        background-image: linear-gradient(43deg, hsla(340, 100%, 76%, 1) 0%, hsla(269, 100%, 77%, 1) 100%);
+        color: white;
+        font-weight: 600;
+    }
+
+    .loginregister .alternative-signup {
+        width: 70%;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .loginregister .alternative-signup>p {
+        width: 90%;
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: 5px;
+        font-weight: 300;
+    }
+
+    .loginregister span {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: hsl(269deg 26% 47%);
+    }
+</style>
+{% endblock csslink %}
+
+{% block body %}
+<main class="loginregister">
+    <form method="POST">
+        {% csrf_token %}
+        <h4 style="border-bottom: 2px solid purple;">Kaydol</h4>
+        <div class="login-form">
+            <h4>Ad</h4>
+            <div class="username-input">
+                <input type="text" name="name" placeholder="Ad">
+            </div>
+            <h4>Soyad</h4>
+            <input type="text" name="surname" placeholder="Soyad">
+            
+            <h4>Email</h4>
+            <div class="username-input">
+                <input type="text" name="email" placeholder="neoshop@neos.com">
+            </div>
+            <h4>Kullanıcı Adı</h4>
+            <div class="username-input">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Kullanıcı Adı Giriniz">
+            </div>
+            <h4>Şifre</h4>
+            <div class="password-input">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password1" placeholder="Şifre Giriniz">
+            </div>
+            <h4>Yeniden Şifre</h4>
+            <div class="password-input">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password2" placeholder="Şifre Giriniz">
+            </div>
+            <a href="#" style="color: purple; margin-top: 10px;display: block;">Şifremi unuttum</a>
+        </div>
+        <button type="submit" class="login-btn">
+            Giriş Yap
+        </button>
+        <div class="alternative-signup">
+            <p>Giriş yapmak için <a href="{% url 'registerUser' %}"><span>Kaydol</span></a></p>
+        </div>
+    </form>
+</main>
+{% endblock body %}

@@ -2,3 +2,39 @@
 /*
 Custom Css
 */
+
+/* Header Start */
+a{
+    
+    text-decoration: none !important;
+    
+}
+.mainheader .icon-text span:nth-child(1){
+    color: orangered;
+}
+.mainheader .icon-text span:nth-child(2){
+    background: linear-gradient(90deg, orangered, purple);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+}
+.mainheader .icon-text span:nth-child(3){
+    color: purple;
+}
+
+.mainheader .nav-link{
+    font-size: 20px !important;
+    font-weight: 500 !important;
+}
+.mainheader .nav-link:hover{
+    color: orangered !important;
+}
+.mainheader .btn-purple{
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    background: purple !important;
+    color: white !important;
+    border: none;
+}
+/* Header End */
