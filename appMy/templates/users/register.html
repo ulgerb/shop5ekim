@@ -130,6 +130,12 @@
 {% block body %}
 <main class="loginregister">
     <form method="POST">
+        {% if hata %}
+        <div class="alert alert-danger alert-dismissible fade show position-absolute w-100" role="alert" style="top: -65px;">
+            {{ hata }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
         {% csrf_token %}
         <h4 style="border-bottom: 2px solid purple;">Kaydol</h4>
         <div class="login-form">
@@ -154,6 +160,10 @@
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password1" placeholder="Şifre Giriniz">
             </div>
+            <ul class="text-success">
+                <li>Şifre uzunluğu en az 6 harf olmalıdır!</li>
+                <li>Şifre sayı içermeli ve bir harfi büyük olmalıdır!</li>
+            </ul>
             <h4>Yeniden Şifre</h4>
             <div class="password-input">
                 <i class="fas fa-lock"></i>
@@ -162,10 +172,10 @@
             <a href="#" style="color: purple; margin-top: 10px;display: block;">Şifremi unuttum</a>
         </div>
         <button type="submit" class="login-btn">
-            Giriş Yap
+            Kaydol
         </button>
         <div class="alternative-signup">
-            <p>Giriş yapmak için <a href="{% url 'registerUser' %}"><span>Kaydol</span></a></p>
+            <p>Giriş yapmak için <a href="{% url 'loginUser' %}"><span>Giriş Yap</span></a></p>
         </div>
     </form>
 </main>

@@ -29,6 +29,7 @@ urlpatterns = [
     path('ürün/', ShopSingle, name='ShopSingle'),
     path('iletişim/', Contact, name='Contact'),
     # USER
-    path('login/', loginUser, name='loginUser'),
-    path('register/', registerUser, name='registerUser'),
+    path('login/', loginUser, name='loginUser'), # giriş yap
+    path('register/', registerUser, name='registerUser'), # kaydol
+    path('logout/', logoutUser, name='logoutUser'),  # çıkış yap
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

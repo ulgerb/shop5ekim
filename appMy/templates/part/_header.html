@@ -71,18 +71,33 @@
                         data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <!-- <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a> -->
-                    <a href="{% url 'loginUser' %}" class="btn btn-success mx-2 btn-purple">Giriş Yap</a>
-                    <a href="" class="btn btn-success btn-purple">Kaydol</a>
+                    
+                    <!-- <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown link
+                        </a>
+                    
+                        
+                    </div> -->
+                    
+                    {% if request.user.is_authenticated %}
+                        <a class="nav-icon position-relative text-decoration-none" href="#">
+                            <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        </a>
+                        <a class="nav-icon position-relative text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'logoutUser' %}">Çıkış Yap</a></li>
+                        </ul>
+                    {% else %}
+                        
+                        <a href="{% url 'loginUser' %}" class="btn btn-success mx-2 btn-purple">Giriş Yap</a>
+                        <a href="{% url 'registerUser' %}" class="btn btn-success btn-purple">Kaydol</a>
+                    {% endif %}
+                        
                 </div>
             </div>
 

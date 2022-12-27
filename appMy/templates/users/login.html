@@ -25,12 +25,15 @@
     height: 100vh;
     width: 100vw;
     background-color:rgb(247, 201, 184);
+    padding-top: 30px;
     }
 
+    .loginregister form .alert {
+        top: -65px;
+    }
     .loginregister form {
     margin: 0 auto;
     width: 400px;
-    max-height: 380px;
     transform: translateY(10%);
     display: flex;
     flex-direction: column;
@@ -122,9 +125,18 @@
 
 {% block body %}
 <main class="loginregister">
+    
     <form method="POST">
+        
+        {% if hata %}
+        <div class="alert alert-danger alert-dismissible fade show position-absolute w-100" role="alert">
+            {{ hata }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+            
         {% csrf_token %}
-        <h4 style="border-bottom: 2px solid purple;">Giriş Yap</h4>
+        <h4 class="" style="border-bottom: 2px solid purple;">Giriş Yap</h4>
         <div class="login-form">
             <h4>Kullanıcı Adı</h4>
             <div class="username-input">
