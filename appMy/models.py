@@ -3,8 +3,21 @@ from django.contrib.auth.models import User
 
 
 
+class Brand(models.Model):
+    image = models.FileField(("Marka Logosu"), upload_to='', max_length=100, null=True)
+    title = models.CharField(("Marka"), max_length=50)
+    
+    def __str__(self):
+        return self.title
+class Category(models.Model):
+    title = models.CharField(("Kategori"), max_length=50)
+
+    def __str__(self):
+        return self.title
 class Product(models.Model):
     user = models.ForeignKey(User, verbose_name=("Kullanıcı"), on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, verbose_name=("Kategori"), on_delete=models.CASCADE, null=True)
+    brand = models.ForeignKey(Brand, verbose_name=("Marka"), on_delete=models.CASCADE, null=True)
     title = models.CharField(("Başlık"), max_length=50)
     text = models.TextField(("Ürün Açıklaması"), max_length=500)
     image = models.FileField(("Ürün Resmi"), upload_to='', max_length=100)
@@ -13,6 +26,9 @@ class Product(models.Model):
     stars = models.FloatField(("Yıldız Ortalaması"))
     commentnum = models.IntegerField(("Yorum Sayısı"))
     
+    def __str__(self):
+        return self.title
+    
 class Comment(models.Model):
     productid = models.ForeignKey(Product, verbose_name=("Yorum Yapılan Ürün"), on_delete=models.CASCADE)
     user = models.ForeignKey(User, verbose_name=("Yorum Yapan Kullanıcı"), on_delete=models.CASCADE)
@@ -20,3 +36,6 @@ class Comment(models.Model):
     text = models.TextField(("Yorum"))
     date_now = models.DateTimeField(("Paylaşma Tarihi"), auto_now_add=True)
     star = models.IntegerField(("Yıldız"))
+
+    def __str__(self):
+        return self.title

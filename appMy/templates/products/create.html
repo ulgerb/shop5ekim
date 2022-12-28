@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+<main>
+    <div class="row justify-content-center">
+        <div class="col-8 my-5 p-5" style="box-shadow: 2px 2px 8px #00000030;">
+            <h2 class="mb-5 fw-bold" style="color: purple;">Ürün Ekle</h2>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <select name="brand" class="form-select" aria-label="Default select example">
+                        <option selected>Markayı Seç</option>
+                        {% for b in brands %}
+                        <option value="{{ b.id }}">{{ b.title }}</option>
+                        {% endfor %}    
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select name="category" class="form-select" aria-label="Default select example">
+                        <option selected>Kategori Seç</option>
+                        {% for c in categorys %}
+                        <option value="{{ c.id }}">{{ c.title }}</option>
+                        {% endfor %}    
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label text-success fw-bold">Ürün Adı</label>
+                    <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Ürün Adı">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput2" class="form-label text-success fw-bold">Fiyat</label>
+                    <input type="number" name="price" class="form-control" id="exampleFormControlInput2" placeholder="Fiyat">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label text-success fw-bold">Ürün Açıklaması</label>
+                    <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="6"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label text-success fw-bold">Ürün Resmi</label>
+                    <input class="form-control" name="image" type="file" id="formFile">
+                </div>
+                <button class="btn btn-success" type="submit">Ürünü Ekle</button>
+            </form>
+        </div>
+    </div>
+</main>
+    
+{% endblock body %}
+    

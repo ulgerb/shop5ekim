@@ -32,4 +32,7 @@ urlpatterns = [
     path('login/', loginUser, name='loginUser'), # giriş yap
     path('register/', registerUser, name='registerUser'), # kaydol
     path('logout/', logoutUser, name='logoutUser'),  # çıkış yap
+    # PRODUCT
+    path('create/', createProduct, name='createProduct'), # Ürün Oluştur
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
