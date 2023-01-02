@@ -16,23 +16,18 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="{% static 'img/product_single_10.jpg' %}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="{{ product.image.url }}" alt="Card image cap" id="product-detail">
                     </div>
-                    <div class="row">
-                        <!--Start Controls-->
+                    <!-- <div class="row">
                         <div class="col-1 align-self-center">
                             <a href="#multi-item-example" role="button" data-bs-slide="prev">
                                 <i class="text-dark fas fa-chevron-left"></i>
                                 <span class="sr-only">Previous</span>
                             </a>
                         </div>
-                        <!--End Controls-->
-                        <!--Start Carousel Wrapper-->
                         <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
-                            <!--Start Slides-->
                             <div class="carousel-inner product-links-wap" role="listbox">
 
-                                <!--First slide-->
                                 <div class="carousel-item active">
                                     <div class="row">
                                         <div class="col-4">
@@ -52,9 +47,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--/.First slide-->
 
-                                <!--Second slide-->
                                 <div class="carousel-item">
                                     <div class="row">
                                         <div class="col-4">
@@ -74,9 +67,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--/.Second slide-->
 
-                                <!--Third slide-->
                                 <div class="carousel-item">
                                     <div class="row">
                                         <div class="col-4">
@@ -96,56 +87,51 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--/.Third slide-->
                             </div>
-                            <!--End Slides-->
                         </div>
-                        <!--End Carousel Wrapper-->
-                        <!--Start Controls-->
                         <div class="col-1 align-self-center">
                             <a href="#multi-item-example" role="button" data-bs-slide="next">
                                 <i class="text-dark fas fa-chevron-right"></i>
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                        <!--End Controls-->
-                    </div>
+                    </div> -->
                 </div>
                 <!-- col end -->
                 <div class="col-lg-7 mt-5">
-                    <div class="card">
+                    <div class="card" style="">
                         <div class="card-body">
-                            <h1 class="h2">Active Wear</h1>
-                            <p class="h3 py-2">$25.00</p>
+                            <h1 class="h2">{{ product.title }}</h1>
+                            <p class="h3 py-2">₺{{ product.price }}</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
+                                <span class="list-inline-item text-dark">Rating {{ product.stars }} | {{ product.commentnum }} Yorumlar</span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Brand:</h6>
+                                    <h6>Marka:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Easy Wear</strong></p>
+                                    <p class="text-muted"><strong>{{ product.brand }}</strong></p>
                                 </li>
                             </ul>
 
-                            <h6>Description:</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse. Donec condimentum elementum convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
-                            <ul class="list-inline">
+                            <h6>Ürün Açıklaması:</h6>
+                            <p>{{ product.text }}</p>
+                            <!-- <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Avaliable Color :</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class="text-muted"><strong>White / Black</strong></p>
                                 </li>
-                            </ul>
+                            </ul> -->
 
-                            <h6>Specification:</h6>
+                            <!-- <h6>Specification:</h6>
                             <ul class="list-unstyled pb-3">
                                 <li>Lorem ipsum dolor sit</li>
                                 <li>Amet, consectetur</li>
@@ -154,15 +140,20 @@
                                 <li>Ut enim ad minim</li>
                                 <li>Dolore magna aliqua</li>
                                 <li>Excepteur sint</li>
-                            </ul>
+                            </ul> -->
 
-                            <form action="" method="GET">
+                            
+
+                        </div>
+                        <div class="card-footer">
+                            <form action="" method="POST">
+                                {% csrf_token %}
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item">Size :
-                                                <input type="hidden" name="product-size" id="product-size" value="S">
+                                                <input type="hidden" name="size" id="product-size" value="S">
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success btn-size">S</span></li>
                                             <li class="list-inline-item"><span class="btn btn-success btn-size">M</span></li>
@@ -174,7 +165,7 @@
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
                                                 Quantity
-                                                <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                                                <input type="hidden" name="adet" id="product-quanity" value="1" min="1">
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
@@ -191,7 +182,6 @@
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -204,9 +194,8 @@
     <section class="py-5">
         <div class="container">
             <div class="row text-left p-2 pb-3">
-                <h4>Related Products</h4>
+                <h4>Önerilen Ürünler</h4>
             </div>
-
             <!--Start Carousel Wrapper-->
             <div id="carousel-related-product">
 
@@ -667,11 +656,70 @@
                 </div>
 
             </div>
-
-
         </div>
     </section>
     <!-- End Article -->
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-left p-2 pb-3">
+                <h4>Yorumlar</h4>
+            </div>
+            <!--Start Carousel Wrapper-->
+            <div class="row">
+                
+                {% for com in comments %}
+                <div class="row col-12 p-3 bg-white my-2" style="min-height: 300px; box-shadow: 1px 1px 8px #00000030;">
+                    <div class="col-3 d-flex flex-column justify-content-between">
+                        <div>{{ com.user }}</div>
+                        <i class="fa fa-fw fa-user text-dark mr-3" style="width: 100px; height: 100px;"></i>
+                        <div>{{ com.star }}</div>
+                    </div>
+                    <div class="col">
+                        <div class="fw-bold">Yorum Başlığı</div>
+                        <div style="height: 20%;">{{ com.title }}</div>
+                        <div class="fw-bold">Yorum</div>
+                        <div style="height: 40%;">{{ com.text }}</div>
+                        <div class="d-flex justify-content-end"><span>{{ com.date_now }}</span></div>
+                    </div>
+                </div>
+                {% endfor %}
+                    
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-left p-2 pb-3">
+                <h4>Yorum Yap</h4>
+            </div>
+            <!--Start Carousel Wrapper-->
+            <div class="row">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <select name="star" class="form-select w-25" aria-label="Default select example">
+                        <option disabled selected>Yorum Puanı</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Yorum Başlığı</label>
+                        <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Yorum Başlığı">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Yorum</label>
+                        <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Yorumu Paylaş</button>
+                </form>
+            </div>
+        </div>
+    </section>
 {% endblock body %}
 
 

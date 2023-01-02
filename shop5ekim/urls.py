@@ -26,7 +26,8 @@ urlpatterns = [
     path('',index,name='index'),
     path('hakkımızda/', About, name='About'),
     path('alışveriş/', Shop, name='Shop'),
-    path('ürün/', ShopSingle, name='ShopSingle'),
+    path('sepet/', shopBuy, name='shopBuy'),
+    path('ürün/<id>/', ShopSingle, name='ShopSingle'),
     path('iletişim/', Contact, name='Contact'),
     # USER
     path('login/', loginUser, name='loginUser'), # giriş yap
