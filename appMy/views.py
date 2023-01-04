@@ -3,25 +3,33 @@ from .models import *
 
 
 def index(request):
-    
-    context={}
+    page_title = 'Anasayfa'
+    context={
+        'page_title': page_title,
+    }
     return render(request,'index.html',context)
 
 def About(request):
-    context={}
+    page_title = 'Hakkında'
+    context={
+        'page_title': page_title,
+    }
     return render(request,'about.html',context)
 
     
 # Product
 def Shop(request):
+    page_title = 'Alışveriş'
     product = Product.objects.all()
 
     context={
         "product":product,
+        'page_title': page_title,
     }
     return render(request,'shop.html',context)
 
 def ShopSingle(request,id):
+    page_title = 'Ürün Detayı'
     product = get_object_or_404(Product, id=id)
     comments = Comment.objects.filter(productid=id) # ürüne yapılan yorumlar
     sumstar = 0
@@ -67,13 +75,20 @@ def ShopSingle(request,id):
     context = {
         "product": product,
         "comments": comments,
+        'page_title': page_title,
     }
     return render(request, 'shop-single.html', context)
 
 
 def shopBuy(request):
+    page_title = 'Sepet'
     shoping = ShopBuy.objects.filter(user=request.user)
+    toplam = 0
+    for i in shoping:
+        toplam += i.allprice
     
+        
+        
     if request.method == "POST":
         key = list(request.POST)[1]
         values = request.POST[key]
@@ -82,15 +97,18 @@ def shopBuy(request):
         product.adet = values
         product.allprice = int(values) * product.product.price
         product.save()
-        return redirect('shopBuy')        
+        return redirect('shopBuy')
         
     context = {
         'shoping': shoping,
+        'toplam': toplam,
+        'page_title': page_title,
     }
     return render(request, 'shop-buy.html', context)
 
 # Ürün Oluştur
 def createProduct(request):
+    page_title = 'Ürün Ekle'
     categorys = Category.objects.all()
     brands = Brand.objects.all()
     if request.method == "POST":
@@ -110,10 +128,14 @@ def createProduct(request):
     context={
         "categorys":categorys,
         "brands": brands,
+        'page_title': page_title,
     }
     return render(request,"products/create.html", context)
 
 
 def Contact(request):
-    context={}
+    page_title = 'İletişim'
+    context={
+        'page_title': page_title,
+    }
     return render(request,'contact.html',context)
